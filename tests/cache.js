@@ -150,6 +150,20 @@ describe("Cache", function() {
         });
     });
 
+    it("setNXAndGetRedisCacheAndReturn1", function(done) {
+        return rediscache_Obj.setNX("Redis-abc2", "Redis-bcd", 10).then(function(val) {
+            assert.ok(val, 1);
+            done();
+        });
+    });
+
+    it("setNXAndGetRedisCacheAndReturn0)", function(done) {
+        return rediscache_Obj.setNX("Redis-abc2", "Redis-bcd", 10).then(function(val) {
+            assert.notOk(val, 0);
+            done();
+        });
+    });
+
     it("removeRedisCache", function(done) {
         return rediscache_Obj.set("Redis-abc", "Redis-bcd").then(function() {
             return rediscache_Obj.remove("Redis-abc").then(function() {
